@@ -1,19 +1,26 @@
 "use strict";
-let x = 50;
-let y =50;
-let color =(50,50,50);
+
+
 
 function setup() {
     console.log("go")
-    createCanvas(500,500);
+    createCanvas (500, 500)
 }
 
 function draw() {
-    background(0,0);
-    fill(color);
-    ellipse(x,y,x+50,y+50);
-    fill(color+50);
-    ellipse(x+100,y+100,x+10,y+10);
-    fill(color+100);
-    ellipse(x+150,y+150,x+30,y+30);
+    background (63);
+    drawEllipse (100, 100, 100, 100, 23, 23, 23);
+
+    drawEllipse (320, 320, 120, 120, 31, 31, 31);
+
+    drawEllipse (30, 30, 70, 70, 20, 100, 18);
+
+}
+
+function drawEllipse(x,y,w,h,r,g,b){
+    fill(r,g,b);
+    ellipse(x, y, w, h);
+
+
+
 }
