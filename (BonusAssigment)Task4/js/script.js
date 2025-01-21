@@ -16,13 +16,14 @@ function draw() {
     rect(0, 0, width / 3, height)
 
 
-    if (mouseX >= width/3 && mouseX <= width/32) {
+    if (mouseX > width/3 && mouseX <= ((width/3)*2)) {
         fill(255)
     } else {
         fill(61, 89, 166)
     }
     rect(width/3, 0, width / 3, height)
-    if (mouseX >= width / 32) {
+
+    if (mouseX >= ((width/3)*2)) {
         fill(255)
     } else {
         fill(75, 123, 166)
