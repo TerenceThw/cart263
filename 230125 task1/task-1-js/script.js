@@ -248,9 +248,51 @@ createGrid(10,10);
 
 /***CODE */
 
+function customNewBoxCreate2(parent){ 
+    let testDiv2 = document.createElement("div");
+    testDiv2.classList.add("testDiv");
+    parent.appendChild(testDiv2);
+    return testDiv2;
+
+}
+
+function createGrid(rows, colloms){
+    let newBox2 = document.getElementById('new-grid-three');
+
+    for (let i=0; i<rows; i++){
+        for(let j=0; j<colloms; j++){
+            let returnDiv2 = customNewBoxCreate2(newBox2);
+
+            returnDiv2.style.left = `${j * 40}px`; 
+            returnDiv2.style.top = `${i * 40}px`;
+
+            if (j%3 ==0){
+                returnDiv2.style.backgroundColor = "red";
+                returnDiv2.textContent = "0"; 
+
+            } else if (j%3==1){
+                returnDiv2.style.backgroundColor = "orange"
+                returnDiv2.textContent = "1"; 
+
+            } else if (j%3 ==2){
+                returnDiv2.style.backgroundColor = "yellow"
+                returnDiv2.textContent = "2"; 
+            }
+           
+        }
+
+    }
+}
+createGrid(10,10);
+
+
+
 
 /***EXPLANATION::
- * 
+ *  the function reamin pretty much the same as the previous one. one top on that, we creatred a for llop that allow us changing 
+ *  the background according to the mathematic result. we divide the variable j (or you can also use i, wont change the reuslt) by 3. 
+ *  When the result is 0, the backgorund turn red, when the reuslt is 1, the background turn orange and when the result is 2, 
+ *  the backgroudn turn yellow. 
  * 
  */
 
