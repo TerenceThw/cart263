@@ -175,7 +175,7 @@ function customCreateElement(parent){
  *  all, we have to find a way to select all the paragraph elemenets and put them in a new vraible. After, we get to the second part, we create a function that 
  * contain all the chanagement we would like to add toward the paragraph element. Once the function has been created, we get to the part three, we call the function.
  * Here, we use a for loop to loop over all the paragraph element, and apply change to each paragraph element.
- * 
+ *  
  */
 
 /*************************************** */
@@ -200,10 +200,36 @@ function customCreateElement(parent){
 
 /***CODE */
 
+function customNewBoxCreate(parent){ 
+    let testDiv = document.createElement("div");
+    testDiv.classList.add("testDiv");
+    parent.appendChild(testDiv);
+    return testDiv;
+
+}
+
+function createGrid(rows, colloms){
+    let newBox = document.getElementById('new-grid');
+
+    for (let i=0; i<rows; i++){
+        for(let j=0; j<colloms; j++){
+            let returnDiv = customNewBoxCreate(newBox);
+
+            returnDiv.style.left = `${j * 40}px`; 
+            returnDiv.style.top = `${i * 40}px`;
+
+        }
+
+    }
+}
+createGrid(10,10);
+
 
 /***EXPLANATION::
- * 
- * 
+ *  This code can be divide into three different parts. First of all, the function customNewBoxCreate create element div and set it into a class. 
+ *  After, we append the testDiv with the funtion. We now move to the next step, create a function that creates grid. We get the elemetn new-grid
+ *  in order to use this css setting for the grid structure. i represnt rows and j represent colloms. After, we call the function customNewBoxCreate 
+ *  and give setting to the size of each grid. Last tep, we call the funtion createGrid in order to dispaly the grids. 
  */
 
 /*************************************** */
