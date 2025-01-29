@@ -292,7 +292,7 @@ createGrid(10,10);
  *  the function reamin pretty much the same as the previous one. one top on that, we creatred a for llop that allow us changing 
  *  the background according to the mathematic result. we divide the variable j (or you can also use i, wont change the reuslt) by 3. 
  *  When the result is 0, the backgorund turn red, when the reuslt is 1, the background turn orange and when the result is 2, 
- *  the backgroudn turn yellow. 
+ *  the backgroudn turn yellow. Also,follwing the change of backgroudn color, it will also show the value that represnt the color.
  * 
  */
 
