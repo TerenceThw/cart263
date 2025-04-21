@@ -1,0 +1,45 @@
+body {
+ margin: 0;
+ overflow: hidden;
+ background-color: #87ceeb;   
+}
+
+#bubble-container {
+position: relative;
+width: 100vw;
+height: 100vh;
+}
+
+.bubble {
+ position: absolute;
+border-radius: 50%;
+background-color: rgba(0, 123, 255, 0.7);
+transform: translate(-50%, -50%);
+box-shadow: 0 0 20px rgba(0, 123, 255, 0.5); 
+cursor: pointer;
+transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.vanish {
+    animation: vanish 0.5s forwards;
+}
+
+@keyframes vanish {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
