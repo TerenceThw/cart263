@@ -20,12 +20,16 @@ let bubblesArray = [];
 let redBubble=null;
 let isGameOver =false;
 let mergeTimer = null;
-const selectorTimeOut = 3000;
+const selectorTimeOut = 5000;
 let hasInteracted = false;
 console.log("Expected data format examples:");
 console.log("Arkit format:", {arkit: {rotation: [0.1, 0.2, 0.3, 0.4]}});
 console.log("Accel format:", {accel: {x: 0.001, y: 0.002}});
 
+
+/**
+ * What to reset when we reset the game
+ */
 function resetGame(){
     isGameOver = false;
     hasInteracted =false;
@@ -36,6 +40,9 @@ function resetGame(){
     generateBubbles();
 }
 
+/**
+ * create Bubbles
+ */
 function generateBubbles() {
     console.log("generateBubbles() called"); 
     const numBubbles = Math.floor(Math.random() * 20) + 10; 
@@ -52,6 +59,9 @@ function generateBubbles() {
     moveBubble();
 }
 
+/**
+ * random selet a bubble to be the red controable bubble
+ */
 function selectRedBubble(){
     if (redBubble && redBubble.element) {
         redBubble.element.classList.remove('select-bubble');
@@ -70,6 +80,9 @@ function selectRedBubble(){
     }
 }
 
+/**
+ * create Bubbles with random position and size
+ */
 function createBubble() {
     const bubble = document.createElement('div');
     bubble.classList.add('bubble');
@@ -94,7 +107,9 @@ function createBubble() {
     return bubbleData;
 }
 
-
+/**
+ * make all bubbles, except the red one randomly move
+ */
 function moveBubble() {
     if (isGameOver) return;
 
@@ -112,6 +127,9 @@ function moveBubble() {
    requestAnimationFrame(moveBubble);
 }
 
+/**
+ * update bubbles position
+ */
     function updatePosition(bubbleData) {
         bubbleData.x += Math.cos(bubbleData.angle) * bubbleData.speed;
         bubbleData.y += Math.sin(bubbleData.angle) * bubbleData.speed;
@@ -131,7 +149,9 @@ function moveBubble() {
     }
 
 
-
+/**
+ * verify the distamce between red bubble and the other bubbles and seeif red bubble can be merge with other bubble
+ */
 function checkDistance(){
     if (!redBubble) return;
 
@@ -163,7 +183,9 @@ function checkDistance(){
 
         }
 
- 
+ /**
+ * merge red bubble with the other bubbles
+ */
 function mergeBubbles(bubble1,bubble2){
     console.log("mergeBubbles");
     if(isGameOver) return;
@@ -180,7 +202,6 @@ function mergeBubbles(bubble1,bubble2){
 
 
     const newSize = Math.sqrt(bubble1.size*bubble1.size + bubble2.size*bubble2.size);
-    //const newSize =50;
     redBubble.element.style.width =`${newSize}px`;
     redBubble.element.style.height =`${newSize}px`;
     redBubble.size =newSize; 
@@ -198,7 +219,9 @@ function mergeBubbles(bubble1,bubble2){
 }
 
 
-
+/**
+ * countdown before plyaer lost the game (5 seconds)
+ */
 function resetMergeTimer(){
     clearTimeout(mergeTimer);
     
@@ -211,7 +234,9 @@ function resetMergeTimer(){
     
 }
 
-
+/**
+ * show message according to the condition and reset game
+ */
 
 function endGame(won){
     isGameOver = true;
@@ -228,6 +253,11 @@ function endGame(won){
         }
     }
 }
+
+
+/**
+ * send data from ZIG SIM PRO to websocket and modify data based on condition 
+ */
 
 let ws = new WebSocket("ws://172.20.10.2:4200");                // this is modify based ib the sample sabine shared with me
 
@@ -281,6 +311,9 @@ ws.onopen = function () {
     };
 };
 
+/**
+ *  move the red bubble
+ */
 function updateBubblePosition(x, y) {
     x = Math.max(0, Math.min(100, Number(x)));
     y = Math.max(0, Math.min(100, Number(y)));
